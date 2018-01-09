@@ -21,6 +21,13 @@ def rate_restaurant(filename):
 
             restaurants[establishment] = rating
 
+    new_restaurant = raw_input("Is there a restaurant we're missing? \n"
+    "Add it for Ratings Points! \n"
+    "Restaurant name: ")
+    new_restaurant_rating = raw_input("Your rating: ")
+
+    restaurants[new_restaurant] = new_restaurant_rating
+
     for establishment, rating in sorted(restaurants.items()):
         print "{} is rated at {}.".format(establishment, rating)
 
