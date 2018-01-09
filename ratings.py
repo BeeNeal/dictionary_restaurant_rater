@@ -4,7 +4,7 @@ import sys
 def rate_restaurant(filename):
     """Restaurant rating lister."""
 
-    restaurant_roster = open(filename)
+    # restaurant_roster = open(filename)
     restaurants = {}
 
     # for each line
@@ -14,16 +14,16 @@ def rate_restaurant(filename):
     # index[0] will be key
     # index[1] will be value!
 
-    for establishment in restaurant_roster:
-        establishment = establishment.rstrip()
-        establishment = establishment.split(":")
+    with open(filename) as restaurant_roster:
 
-        restaurants[establishment[0]] = establishment[1]
+        for line in restaurant_roster:
+            establishment, rating = line.rstrip().split(":")
 
-    restaurants = restaurants.items()
-    sorted_restaurants = sorted(restaurants)
+            restaurants[establishment] = rating
 
-    for establishment, rating in sorted_restaurants:
+    for establishment, rating in sorted(restaurants.items()):
         print "{} is rated at {}.".format(establishment, rating)
 
-print rate_restaurant(sys.argv[1])
+    # restaurant_roster.close()
+
+rate_restaurant(sys.argv[1])
