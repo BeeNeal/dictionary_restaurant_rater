@@ -24,9 +24,14 @@ def rate_restaurant(filename):
     new_restaurant = raw_input("Is there a restaurant we're missing? \n"
     "Add it for Ratings Points! \n"
     "Restaurant name: ")
-    new_restaurant_rating = raw_input("Your rating: ")
 
-    restaurants[new_restaurant] = new_restaurant_rating
+    while True:
+        new_restaurant_rating = raw_input("Your rating: ")
+
+        if 0 < int(new_restaurant_rating) < 6:
+            restaurants[new_restaurant] = new_restaurant_rating
+        else:
+            print "Please enter a number rating between 1 and 5"
 
     for establishment, rating in sorted(restaurants.items()):
         print "{} is rated at {}.".format(establishment, rating)
